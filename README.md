@@ -61,7 +61,6 @@ Input text it´s the same as `Wolfram Alpha` web site but it´s recommended use 
 
 Tested on: `windows 10`, `ubuntu 14.04`, `ubuntu 16.04`, `ubuntu 18.04`, `lubuntu 18.04` and `raspbian`.
 
-
 ## Status
 
 [![Build Status](https://travis-ci.org/davidvelascogarcia/wolframAlphaKnowledge.svg?branch=develop)](https://travis-ci.org/davidvelascogarcia/wolframAlphaKnowledge)
