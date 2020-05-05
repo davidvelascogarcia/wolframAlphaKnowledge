@@ -23,6 +23,7 @@ import configparser
 import datetime
 import os
 import platform
+import time
 import wolframalpha
 import yarp
 
@@ -96,20 +97,30 @@ print("Release:")
 print(systemRelease)
 
 print("")
-print("")
 print("**************************************************************************")
 print("Authentication:")
 print("**************************************************************************")
 
-# Get autentication data
-print("")
-print("Getting authentication data ...")
-authenticationObject = configparser.ConfigParser()
-authenticationObject.read('../config/authentication.ini')
-authenticationObject.sections()
+loopControlFileExists = 0
 
-userID = authenticationObject['Authentication']['user-id']
-accessToken = authenticationObject['Authentication']['access-token']
+while int(loopControlFileExists)==0:
+    try:
+        # Get autentication data
+        print("")
+        print("Getting authentication data ...")
+        authenticationObject = configparser.ConfigParser()
+        authenticationObject.read('../config/authentication.ini')
+        authenticationObject.sections()
+
+        userID = authenticationObject['Authentication']['user-id']
+        accessToken = authenticationObject['Authentication']['access-token']
+        loopControlFileExists = 1
+
+    except:
+        print("")
+        print("Sorry, athentication.ini not founded, waiting 4 seconds to the next check ...")
+        print("")
+        time.sleep(4)
 
 print("Data obtained correctly.")
 print("")
