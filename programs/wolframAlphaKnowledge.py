@@ -37,10 +37,10 @@ print("*************************************************************************
 print("**************************************************************************")
 
 print("")
-print("Starting system...")
+print("Starting system ...")
 
 print("")
-print("Loading Wolfram Alpha Knowledge engine...")
+print("Loading Wolfram Alpha Knowledge engine ...")
 
 print("")
 print("")
@@ -55,7 +55,7 @@ yarp.Network.init()
 
 
 print("")
-print("Opening data input port with name /wolframAlphaKnowledge/data:i ...")
+print("[INFO] Opening data input port with name /wolframAlphaKnowledge/data:i ...")
 
 # Open input data port
 wolframAlphaKnowledge_inputPort = yarp.Port()
@@ -66,7 +66,7 @@ wolframAlphaKnowledge_inputPort.open(wolframAlphaKnowledge_inputPortName)
 inputBottle=yarp.Bottle()
 
 print("")
-print("Opening data output port with name /wolframAlphaKnowledge/data:o ...")
+print("[INFO] Opening data output port with name /wolframAlphaKnowledge/data:o ...")
 
 # Open output data port
 wolframAlphaKnowledge_outputPort = yarp.Port()
@@ -118,11 +118,11 @@ while int(loopControlFileExists)==0:
 
     except:
         print("")
-        print("Sorry, athentication.ini not founded, waiting 4 seconds to the next check ...")
+        print("[ERROR] Sorry, athentication.ini not founded, waiting 4 seconds to the next check ...")
         print("")
         time.sleep(4)
 
-print("Data obtained correctly.")
+print("[INFO] Data obtained correctly.")
 print("")
 print("Selected user: "+ str(userID))
 
@@ -136,7 +136,7 @@ print("Configuring Wolfram Alpha authentication client ...")
 
 wolframAlphaClient = wolframalpha.Client(str(accessToken))
 
-print("Client configuration done.")
+print("[INFO] Client configuration done.")
 
 
 while True:
@@ -149,7 +149,7 @@ while True:
     dataToResolve = inputBottle.toString()
     dataToResolve = dataToResolve.replace('"','')
 
-    print("Data received: "+str(dataToResolve))
+    print("[RECEIVED] Data received: "+str(dataToResolve))
 
     print("")
     print("")
@@ -172,10 +172,10 @@ while True:
         print("Results:")
         print("**************************************************************************")
         print("")
-        print(dataResolved)
+        print("[RESULTS] Request results: "+ dataResolved)
     except:
         print("")
-        print("Sorry, i could´t resolve your request.")
+        print("[ERROR] Sorry, i couldn´t resolve your request.")
 
 
     # Send output results
@@ -184,7 +184,7 @@ while True:
     wolframAlphaKnowledge_outputPort.write(outputBottle)
 
 # Close YARP ports
-print("Closing YARP ports...")
+print("[INFO] Closing YARP ports...")
 wolframAlphaKnowledge_inputPort.close()
 wolframAlphaKnowledge_outputPort.close()
 
