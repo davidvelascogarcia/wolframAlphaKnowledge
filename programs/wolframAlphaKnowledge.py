@@ -207,6 +207,9 @@ while int(loopControlRequest) == 0:
         print("[ERROR] Sorry, i couldn´t resolve your request.")
         print("")
 
+        # Prevent error send previous request
+        dataResolved = "ERROR"
+
     # Send wolframAlphaKnowledge output results
     wolframAlphaKnowledgeOutputBottle.clear()
     wolframAlphaKnowledgeOutputBottle.addString(str(dataResolved))
